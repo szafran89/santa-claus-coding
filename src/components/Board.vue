@@ -5,7 +5,14 @@
         <div class="board__item board__item--label" :key="y.y">
           {{ y.y }}
         </div>
-        <div v-for="x in y.rows" class="board__item" :key="x.code" :class="{ 'board__item--label': y.y == 0 }">
+        <div
+          v-for="x in y.rows"
+          :key="x.code"
+          :class="{ 'board__item--label': y.y == 0 }"
+          :ref="x.code"
+          @click="printCell(x.code)"
+          class="board__item"
+        >
           {{ x.label ? x.label : '' }}
         </div>
       </template>
@@ -15,6 +22,9 @@
 
 <script>
   export default {
+    props: [
+      'selectedColor'
+    ],
     data () {
       return {
         columns: [
@@ -308,6 +318,12 @@
             ]
           }
         ]
+      }
+    },
+    methods: {
+      printCell (code) {
+        this.$refs[code][0].style.background = this.selectedColor
+        console.log(this.selectedColor)
       }
     }
   }
