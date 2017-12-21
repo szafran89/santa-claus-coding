@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="board">
-      <template v-for="y in columns">
+      <template v-for="y in board">
         <div class="board__item board__item--label" :key="y.y">
           {{ y.y }}
         </div>
@@ -10,7 +10,7 @@
           :key="x.code"
           :class="{ 'board__item--label': y.y == 0 }"
           :ref="x.code"
-          @click="printCell(x.code)"
+          @click="onSelectCell(x.code)"
           class="board__item"
         >
           {{ x.label ? x.label : '' }}
@@ -21,309 +21,29 @@
 </template>
 
 <script>
+  import colors from '../../data/colors.json'
+  import board from '../../data/board.json'
+
   export default {
     props: [
       'selectedColor'
     ],
     data () {
       return {
-        columns: [
-          {
-            y: 0,
-            rows: [
-              {label: 'A'},
-              {label: 'B'},
-              {label: 'C'},
-              {label: 'D'},
-              {label: 'E'},
-              {label: 'F'},
-              {label: 'G'},
-              {label: 'H'},
-              {label: 'I'},
-              {label: 'J'},
-              {label: 'K'},
-              {label: 'L'}
-            ]
-          },
-          {
-            y: 1,
-            rows: [
-              {code: '1A'},
-              {code: '1B'},
-              {code: '1C'},
-              {code: '1D'},
-              {code: '1E'},
-              {code: '1F'},
-              {code: '1G'},
-              {code: '1H'},
-              {code: '1I'},
-              {code: '1J'},
-              {code: '1K'},
-              {code: '1L'}
-            ]
-          },
-          {
-            y: 2,
-            rows: [
-              {code: '2A'},
-              {code: '2B'},
-              {code: '2C'},
-              {code: '2D'},
-              {code: '2E'},
-              {code: '2F'},
-              {code: '2G'},
-              {code: '2H'},
-              {code: '2I'},
-              {code: '2J'},
-              {code: '2K'},
-              {code: '2L'}
-            ]
-          },
-          {
-            y: 3,
-            rows: [
-              {code: '3A'},
-              {code: '3B'},
-              {code: '3C'},
-              {code: '3D'},
-              {code: '3E'},
-              {code: '3F'},
-              {code: '3G'},
-              {code: '3H'},
-              {code: '3I'},
-              {code: '3J'},
-              {code: '3K'},
-              {code: '3L'}
-            ]
-          },
-          {
-            y: 4,
-            rows: [
-              {code: '4A'},
-              {code: '4B'},
-              {code: '4C'},
-              {code: '4D'},
-              {code: '4E'},
-              {code: '4F'},
-              {code: '4G'},
-              {code: '4H'},
-              {code: '4I'},
-              {code: '4J'},
-              {code: '4K'},
-              {code: '4L'}
-            ]
-          },
-          {
-            y: 5,
-            rows: [
-              {code: '5A'},
-              {code: '5B'},
-              {code: '5C'},
-              {code: '5D'},
-              {code: '5E'},
-              {code: '5F'},
-              {code: '5G'},
-              {code: '5H'},
-              {code: '5I'},
-              {code: '5J'},
-              {code: '5K'},
-              {code: '5L'}
-            ]
-          },
-          {
-            y: 6,
-            rows: [
-              {code: '6A'},
-              {code: '6B'},
-              {code: '6C'},
-              {code: '6D'},
-              {code: '6E'},
-              {code: '6F'},
-              {code: '6G'},
-              {code: '6H'},
-              {code: '6I'},
-              {code: '6J'},
-              {code: '6K'},
-              {code: '6L'}
-            ]
-          },
-          {
-            y: 7,
-            rows: [
-              {code: '7A'},
-              {code: '7B'},
-              {code: '7C'},
-              {code: '7D'},
-              {code: '7E'},
-              {code: '7F'},
-              {code: '7G'},
-              {code: '7H'},
-              {code: '7I'},
-              {code: '7J'},
-              {code: '7K'},
-              {code: '7L'}
-            ]
-          },
-          {
-            y: 8,
-            rows: [
-              {code: '8A'},
-              {code: '8B'},
-              {code: '8C'},
-              {code: '8D'},
-              {code: '8E'},
-              {code: '8F'},
-              {code: '8G'},
-              {code: '8H'},
-              {code: '8I'},
-              {code: '8J'},
-              {code: '8K'},
-              {code: '8L'}
-            ]
-          },
-          {
-            y: 9,
-            rows: [
-              {code: '9A'},
-              {code: '9B'},
-              {code: '9C'},
-              {code: '9D'},
-              {code: '9E'},
-              {code: '9F'},
-              {code: '9G'},
-              {code: '9H'},
-              {code: '9I'},
-              {code: '9J'},
-              {code: '9K'},
-              {code: '9L'}
-            ]
-          },
-          {
-            y: 10,
-            rows: [
-              {code: '10A'},
-              {code: '10B'},
-              {code: '10C'},
-              {code: '10D'},
-              {code: '10E'},
-              {code: '10F'},
-              {code: '10G'},
-              {code: '10H'},
-              {code: '10I'},
-              {code: '10J'},
-              {code: '10K'},
-              {code: '10L'}
-            ]
-          },
-          {
-            y: 11,
-            rows: [
-              {code: '11A'},
-              {code: '11B'},
-              {code: '11C'},
-              {code: '11D'},
-              {code: '11E'},
-              {code: '11F'},
-              {code: '11G'},
-              {code: '11H'},
-              {code: '11I'},
-              {code: '11J'},
-              {code: '11K'},
-              {code: '11L'}
-            ]
-          },
-          {
-            y: 12,
-            rows: [
-              {code: '12A'},
-              {code: '12B'},
-              {code: '12C'},
-              {code: '12D'},
-              {code: '12E'},
-              {code: '12F'},
-              {code: '12G'},
-              {code: '12H'},
-              {code: '12I'},
-              {code: '12J'},
-              {code: '12K'},
-              {code: '12L'}
-            ]
-          },
-          {
-            y: 13,
-            rows: [
-              {code: '13A'},
-              {code: '13B'},
-              {code: '13C'},
-              {code: '13D'},
-              {code: '13E'},
-              {code: '13F'},
-              {code: '13G'},
-              {code: '13H'},
-              {code: '13I'},
-              {code: '13J'},
-              {code: '13K'},
-              {code: '13L'}
-            ]
-          },
-          {
-            y: 14,
-            rows: [
-              {code: '14A'},
-              {code: '14B'},
-              {code: '14C'},
-              {code: '14D'},
-              {code: '14E'},
-              {code: '14F'},
-              {code: '14G'},
-              {code: '14H'},
-              {code: '14I'},
-              {code: '14J'},
-              {code: '14K'},
-              {code: '14L'}
-            ]
-          },
-          {
-            y: 15,
-            rows: [
-              {code: '15A'},
-              {code: '15B'},
-              {code: '15C'},
-              {code: '15D'},
-              {code: '15E'},
-              {code: '15F'},
-              {code: '15G'},
-              {code: '15H'},
-              {code: '15I'},
-              {code: '15J'},
-              {code: '15K'},
-              {code: '15L'}
-            ]
-          },
-          {
-            y: 16,
-            rows: [
-              {code: '16A'},
-              {code: '16B'},
-              {code: '16C'},
-              {code: '16D'},
-              {code: '16E'},
-              {code: '16F'},
-              {code: '16G'},
-              {code: '16H'},
-              {code: '16I'},
-              {code: '16J'},
-              {code: '16K'},
-              {code: '16L'}
-            ]
-          }
-        ]
+        colors,
+        board
       }
     },
     methods: {
-      printCell (code) {
-        this.$refs[code][0].style.background = this.selectedColor
-        console.log(this.selectedColor)
+      onSelectCell (code) {
+        if (this.selectedColor && this.validateColor(code)) {
+          const cell = this.$refs[code][0]
+          cell.style.background = '#' + this.selectedColor.hex
+        }
+      },
+      validateColor (code) {
+        const codes = this.colors[this.selectedColor.hex].codes
+        return codes.includes(code)
       }
     }
   }

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    {{ selectedColor ? selectedColor : 'You have to select color' }}
+    {{ selectedColor ? 'Selected color: ' + selectedColor.label : 'You have to select color' }}
     <Colors v-on:setColor="setColor" />
     <Board :selected-color="selectedColor"/>
   </div>
@@ -22,8 +22,8 @@ export default {
     }
   },
   methods: {
-    setColor (hex) {
-      this.selectedColor = hex
+    setColor (color) {
+      this.selectedColor = color
     }
   }
 }
