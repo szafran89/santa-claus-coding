@@ -21,11 +21,11 @@
       </button>
       <div class="colors__codes">
         <span
-          v-for="code in color.codes"
+          v-for="(code, index) in color.codes"
           :key="code.hex"
           class="colors__item-hex"
         >
-          {{ code }},
+          {{ code }}<template v-if="index !== color.codes.length - 1">,</template>
         </span>
       </div>
     </div>
