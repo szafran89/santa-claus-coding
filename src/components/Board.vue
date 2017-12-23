@@ -54,7 +54,7 @@
       },
       validateColor (code) {
         const codes = this.colors[this.selectedColor.hex].codes
-        return codes.includes(code)
+        return codes.contains(code)
       }
     }
   }
