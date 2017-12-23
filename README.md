@@ -1,6 +1,6 @@
-# pixel-santa-claus
+# santa-claus-coding
 
-> Easy app to code Santa Claus for kids.
+> Easy app to code Santa Claus for kids. Demo: https://santa-claus-coding.netlify.com/
 
 ## How it works
 
