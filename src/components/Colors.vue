@@ -80,6 +80,7 @@
     text-transform: uppercase;
     text-align: left;
     cursor: pointer;
+    background-color: #fff;
   }
 
   .colors_item-button--active .colors__item-button-icon {
