@@ -8,7 +8,7 @@
     </div>
     <div class="summary__success" v-if="summary.checked === codesSum">
       <div class="summary__success-text">
-        Looks like you nailed it, kid! 👏 🎉 🎊 🎄
+        Looks like you nailed it, kid!
       </div>
       <img src="https://media2.giphy.com/media/3o6fJ93v9wb1FqEtPO/giphy.gif">
     </div>

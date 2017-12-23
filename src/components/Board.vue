@@ -62,8 +62,10 @@
 
 <style scoped>
   .board {
+    display: -ms-grid;
     display: grid;
-    grid-template-columns: 38px 38px 38px 38px 38px 38px 38px 38px 38px 38px 38px 38px 38px;
+    -ms-grid-columns: 35px 35px 35px 35px 35px 35px 35px 35px 35px 35px 35px 35px 35px;
+    grid-template-columns: 35px 35px 35px 35px 35px 35px 35px 35px 35px 35px 35px 35px 35px;
     grid-gap: 1px;
     padding: 5px;
     background-color: #fff;
@@ -71,9 +73,9 @@
   }
 
   .board__item {
-    height: 38px;
-    border: 1px solid #f1f1f1;
-    line-height: 38px;
+    height: 35px;
+    border: 1px solid #d4d4d4;
+    line-height: 35px;
     cursor: pointer;
     color: #000;
     background-color: #fff;
