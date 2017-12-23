@@ -10,7 +10,11 @@
         />
       </div>
       <div class="template__sidebar">
-        <Colors :colors="colors" v-on:setColor="setColor" />
+        <Colors
+          :colors="colors"
+          v-on:setColor="setColor"
+          v-if="summary.checked !== codesSum"
+        />
         <Summary :codesSum="codesSum" :summary="summary" />
       </div>
     </main>
