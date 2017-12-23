@@ -19,7 +19,7 @@
 </script>
 
 <style scoped>
-  .summary .summary__item {
+  .summary__item {
     width: 100%;
     padding: 5px;
     font-weight: bold;

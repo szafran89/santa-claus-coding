@@ -10,9 +10,6 @@
         />
       </div>
       <div class="template__sidebar">
-        <!-- <div class="notification">
-          {{ selectedColorNotification }}
-        </div> -->
         <Colors :colors="colors" v-on:setColor="setColor" />
         <Summary :codesSum="codesSum" :summary="summary" />
       </div>
@@ -50,11 +47,6 @@
         return Object.keys(this.colors)
           .map((key, index) => this.colors[key].codes.length)
           .reduce((a, b) => a + b, 0)
-      },
-      selectedColorNotification () {
-        return this.selectedColor
-          ? 'Selected color: ' + this.selectedColor.label
-          : 'Please select color from belowe list!'
       }
     },
     methods: {
@@ -99,17 +91,5 @@
     margin-left: 20px;
     padding: 10px;
     border: 1px solid #f1f1f1;
-  }
-
-  .notification {
-    margin-bottom: 20px;
-    padding: 10px;
-    font-weight: bold;
-    text-align: left;
-    color: #c83a3b;
-  }
-
-  .notification--active {
-    color: #28c659;
   }
 </style>
